@@ -5,7 +5,7 @@ pygments: true
 paginate: 10
 permalink: pretty
 
-title: Kong's Blog
-url: http://lingxiankong.github.io
+title: Yong's Blog
+url: http://yongluo2013.github.io
 feed: /atom.xml
-author_info: <a href="http://lingxiankong.github.io/">Lingxian Kong</a>
+author_info: <a href="http://yongluo2013.github.io/">Yong Luo</a>
