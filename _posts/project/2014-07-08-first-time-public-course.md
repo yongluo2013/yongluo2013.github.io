@@ -1,7 +1,7 @@
 ---
 layout: post
 title: (转)如何树立个人品牌
-category: opinion
+category: project
 description: (转)如何树立个人品牌
 ---
 
