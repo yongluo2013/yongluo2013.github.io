@@ -25,7 +25,7 @@ $(document).ready(function(){
 
     //***********************
     //**评论的代码也删掉哦***
-    window.disqus_shortname = 'lingxiankong'; // required: replace example with your forum shortname
+    window.disqus_shortname = 'beiyuu'; // required: replace example with your forum shortname
     $('#disqus_container .comment').on('click',function(){
         $(this).html('加载中...');
         var that = this;
@@ -130,7 +130,7 @@ $(document).ready(function(){
             };
         })();
 
-        if($('.entry h2').length > 1 && !isMobile.any() && !ie6){
+        if($('.entry h2').length > 2 && !isMobile.any() && !ie6){
 
             genIndex();
 
