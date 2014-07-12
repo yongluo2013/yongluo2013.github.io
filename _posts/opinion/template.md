@@ -1,8 +1,13 @@
 ---
 layout: post
-title: 谈谈刚需和360影视
+title: jQuery解构
 category: opinion
-description: 一个看起来很简单的需求，做起来真的有那么困难吗，到底是怎么回事？
+description: jQuery是一个伟大作品，他的完成充满智慧，我们来一点点拆解他，去理解作者的思想精华。
 ---
 
-[BeiYuu]:    http://beiyuu.com  "BeiYuu"
+声明：  
+本博客欢迎转发，但请保留原作者信息! 内容系本人及本人团队学习、研究和总结，如有雷同，实属荣幸！
+作者： [罗勇] 云计算工程师、敏捷开发实践者
+博客： <http://yongluo2013.github.io/>
+微博： <http://weibo.com/u/1704250760/>
+
