@@ -165,24 +165,19 @@ gluster volume start nova-gluster-vol
 
 ->We can check the volume information
 
+```
 gluster volume info
-
 Volume Name: nova-gluster-vol
-
 Type: Distributed-Replicate
-
 Status: Started
-
 Number of Bricks: 2 x 2 = 4
-
 Transport-type: tcp
-
 Bricks:
 	Brick1: 10.68.125.18:/brick1/sdb
 	Brick2: 10.68.125.19:/brick1/sdb
 	Brick3: 10.68.125.20:/brick1/sdb
 	Brick4: 10.68.125.21:/brick1/sdb
-
+```
 ->On each nova-compute node, mount the GluserFS volume to /var/lib/nova/instances
 
 ```
