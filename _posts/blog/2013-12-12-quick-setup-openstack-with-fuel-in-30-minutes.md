@@ -32,10 +32,10 @@ Fuel 3.2基于Grizzly版本，而最新将发布的4.0版本是基于Havana版�
 
 * 节点的自动发现和预校验
 * 配置简单、快速
-*　支持多种操作系统和发行版，支持HA部署
-×　对外提供API对环境进行管理和配置，例如动态添加计算/存储节点
-×　自带健康检查工具
-×　支持Neutron，例如GRE和namespace都做进来了，子网能配置具体使用哪个物理网卡等
+* 支持多种操作系统和发行版，支持HA部署
+× 对外提供API对环境进行管理和配置，例如动态添加计算/存储节点
+× 自带健康检查工具
+× 支持Neutron，例如GRE和namespace都做进来了，子网能配置具体使用哪个物理网卡等
 
 ##Fuel 的架构是怎样的呢？
 
@@ -63,7 +63,6 @@ Fuel 主节点：用于提供PXE方式操作系统安装服务由开源软件Cob
 **安装包准备**
 
 * 下载virtualbox 包 https://www.virtualbox.org/wiki/Downloads/
-
 * 下载fuel ios包，先要注册一个mirantis 用户账户，目前最新版本是3.2.1 这个版本， MirantisOpenStack-3.2.1.iso （1.8G)http://www.openstack.cn/p383.html
 
 **安装步骤**
@@ -304,11 +303,11 @@ instance 创建成功后，同时点击相应instance test0右边的”more“ �
 
 至此fuel web openstack 安装介绍结束，如果要安装更多节点请重复上面操作即可。
 
-其他工具
+**其他工具**
 
 当然，openstack安装工具不只是有fuel ，还有红帽子的packstack 也是不错的，并且支持最新版本的openstack 安装。这里有篇文章对二者做了比较全面的介绍 http://www.openstack.cn/p383.html。
 
-参考文档：
+**参考文档**
 
 http://openstack-huawei.github.io/mirantis-openstack/
 
