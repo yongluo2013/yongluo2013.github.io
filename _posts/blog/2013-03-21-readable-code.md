@@ -5,6 +5,8 @@ description: 将《The Art of Readable Code》的读书笔记和一点自己的�
 category: blog
 ---
 
+文章出处: http://beiyuu.com/readable-code/
+
 这是《The Art of Readable Code》的读书笔记，再加一点自己的认识。强烈推荐此书：
 
 - 英文版：[《The Art of Readable Code》][RCEN]
