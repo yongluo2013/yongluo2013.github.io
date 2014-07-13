@@ -20,15 +20,19 @@ Block live migration does not require shared storage among nova-compute nodes, i
 To enable block live migration, we need to change libvirtd and nova.conf configurations on every nova-compute hosts:
 
 ->Edit /etc/libvirt/libvirtd.conf
+
 ```
 listen_tls = 0
 listen_tcp = 1
 auth_tcp = “none”
 ```
+
 ->Edit /etc/sysconfig/libvirtd
+
 ```
 LIBVIRTD_ARGS=”–listen”
 ```
+
 ->Restart libvirtd
 ```
 service libvirtd restart
