@@ -5,7 +5,7 @@ category: blog
 description: I’m back with another “how to” article on Open vSwitch (OVS), this time taking a look at using GRE (Generic Routing Encapsulation) tunnels with OVS.
 ---
 
-The post from http://blog.scottlowe.org/2013/05/07/using-gre-tunnels-with-open-vswitch/ 
+The post from [http://blog.scottlowe.org/2013/05/07/using-gre-tunnels-with-open-vswitch/](http://blog.scottlowe.org/2013/05/07/using-gre-tunnels-with-open-vswitch/)    
 
 I’m back with another “how to” article on Open vSwitch (OVS), this time taking a look at using GRE (Generic Routing Encapsulation) tunnels with OVS. OVS can use GRE tunnels between hosts as a way of encapsulating traffic and creating an overlay network. OpenStack Quantum can (and does) leverage this functionality, in fact, to help separate different “tenant networks” from one another. In this write-up, I’ll walk you through the process of configuring OVS to build a GRE tunnel to build an overlay network between two hypervisors running KVM.
 

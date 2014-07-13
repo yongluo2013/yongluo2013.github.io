@@ -5,7 +5,7 @@ category: blog
 description: When using the Open vSwitch Quantum plugin with GRE there can be problems connecting to some sites while other sites work fine. 
 ---
 
-The post from  http://techbackground.blogspot.co.uk/2013/06/path-mtu-discovery-and-gre.html
+The post from  [http://techbackground.blogspot.co.uk/2013/06/path-mtu-discovery-and-gre.html](http://techbackground.blogspot.co.uk/2013/06/path-mtu-discovery-and-gre.html)    
 
 ##The ISSUES
 

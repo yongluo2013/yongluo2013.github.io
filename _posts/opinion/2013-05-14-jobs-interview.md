@@ -5,7 +5,7 @@ category: opinion
 description: 多年前乔布斯的一次访谈，最近才被重新找出来，可以仔细看看
 ---
 
-文章出处：http://beiyuu.com/jobs-interview/
+文章出处：[http://beiyuu.com/jobs-interview/](http://beiyuu.com/jobs-interview/)   
 
 ##1、做公司就是做产品
 

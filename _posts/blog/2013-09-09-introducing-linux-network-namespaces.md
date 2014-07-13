@@ -5,7 +5,7 @@ category: blog
 description: In this post, I’m going to introduce you to the concept of Linux network namespaces.
 ---
 
-Post from http://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/
+Post from [http://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/](http://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/)    
 
 In this post, I’m going to introduce you to the concept of Linux network namespaces. While it might seem a bit esoteric right now, trust me that there is a reason why I’m introducing you to network namespaces—if you, like me, are on a journey to better understand OpenStack, you’ll almost certainly run into network namespaces again.
 

@@ -5,7 +5,7 @@ category: blog
 description: Like AWS CloudFormation, Heat allows to create auto scaling stacks.
 ---
 
-The post from  http://techs.enovance.com/5991/autoscaling-with-heat-and-ceilometer
+The post from  [http://techs.enovance.com/5991/autoscaling-with-heat-and-ceilometer](http://techs.enovance.com/5991/autoscaling-with-heat-and-ceilometer)    
 
 Like AWS CloudFormation, Heat allows to create auto scaling stacks. In order to do this, some metrics need to be retrieved from your VM and some actions need to be triggered when a specified event occurs on these metrics. These actions are usually upscaling (create some new VMs) or downscaling (destroy some VMs).
 

@@ -5,7 +5,7 @@ category: opinion
 description: 作为一名程序员，如何更快地提高自己从而让自己向更高级别飞跃是每个人都要关心的问题。
 ---
 
-文章出处: http://blog.csdn.net/singwhatiwanna/article/details/19174597
+文章出处: [http://blog.csdn.net/singwhatiwanna/article/details/19174597](http://blog.csdn.net/singwhatiwanna/article/details/19174597)   
 
 ##前言
 
