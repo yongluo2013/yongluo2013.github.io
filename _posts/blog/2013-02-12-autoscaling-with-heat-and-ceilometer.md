@@ -50,7 +50,9 @@ Boot a vm, install devstack, configure your stack. Enable all Heat/Ceilometer se
 * EXTRA_OPTS=(notification_driver=nova.openstack.common.notifier.rabbit_notifier,Ceilometer.compute.nova_notifier)
 And go !
 
+```
     $ ./stack.sh
+```
 
 A couple of minutes later we can start playing. You can take a look at this quick video demo of the feature
 
