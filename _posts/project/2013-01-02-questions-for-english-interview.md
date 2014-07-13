@@ -5,6 +5,12 @@ category: project
 description: 对外企的英文面试应该按照以下步骤来进行准备
 ---
 
+
+声明：本博客欢迎转发，但请保留原作者信息!      
+作者：[罗勇] 云计算工程师、敏捷开发实践者    
+博客：[http://yongluo2013.github.io/](http://yongluo2013.github.io/)    
+微博：[http://weibo.com/u/1704250760/](http://weibo.com/u/1704250760/)    
+
 对外企的英文面试应该按照以下步骤来进行准备：
 
 (1) 预测问题。这个环节不但能帮助你克服听力困难， 而且能缓解你在面试时候的紧张情绪。想象一下， 如果总是Pardon, Excuse me， 你怎么可能镇定自若？
