@@ -6,7 +6,8 @@ description: 一直以来，对于openstack 的初学者来讲，安装往往是
 ---
 
 声明：  
-本博客欢迎转发，但请保留原作者信息! 内容系本人及本人团队学习、研究和总结，如有雷同，实属荣幸！
+本博客欢迎转发，但请保留原作者信息! 内容系本人及本人团队学习、研究和总结，如有雷同，实属荣幸!
+
 作者： [罗勇] 云计算工程师、敏捷开发实践者
 博客： <http://yongluo2013.github.io/>
 微博： <http://weibo.com/u/1704250760/>
@@ -14,7 +15,7 @@ description: 一直以来，对于openstack 的初学者来讲，安装往往是
 
 一直以来，对于openstack 的初学者来讲，安装往往是入门的头大难题。在E版本之前，要搭建一个基本能用的openstack 环境那是相当麻烦，自己要装机，自己搞源，自己照着文档敲命令，又没有靠谱的文档，官方给出的文档依旧有好多坑，还有语言问题往往用上好几天时间都装不起来，慢慢地就丧失了学习openstack 的信心！不过后来情况有了很大改观，从E版本开始，以后安装过程简化许多，文档质量提高不少。尽管如此对于初学者还讲还是比较复杂，其实很多时候，很多人只是想体会一下openstack，完全不关注安装这门子事情。还好openstack社区足够活跃，很快就有公司做出了比较友好的安装工具，比如今天要向大家介绍的Fuel这个工具，其实这里还可以叫她mirantis openstack，由Mirantis 公司开发。
 
-[fuel overview](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_overview.jpg)
+!![fuel overview](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_overview.jpg)
 
 ##关于 Mirantis
 
@@ -43,7 +44,7 @@ Fuel 3.2基于Grizzly版本，而最新将发布的4.0版本是基于Havana版�
 
 ##Fuel 的架构是怎样的呢？
 
-[fuel arch](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_arch.png)
+![fuel arch](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_arch.png)
 
 Fuel 主节点：用于提供PXE方式操作系统安装服务由开源软件Cobbler 提供，另外由Mcollective和puppet 分别提供orchestration服务和配置管理服务。Fuel iso 包发部的时候已经一同打包了Centos6.4 和ubuntu 12.04 安装包，如果需要使用红帽子企业版RHEL6.4 需要自己手动上传。
 
@@ -53,7 +54,7 @@ Fuel 主节点：用于提供PXE方式操作系统安装服务由开源软件Cob
 
 首先要说明的是Fuel 针对目标就是生产环境openstack部署，这里为了讲解安装过程就在虚拟机上演示说明。我的环境是HP笔记本Folio 9470 ，其实是办公用的普通笔记本，读者可以根据实际机器情况自行修改虚拟机配置，我给出了我的配置仅供参考。
 
-[fuel master bios](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_bios.jpg)
+![fuel master bios](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_bios.jpg)
 
 ##安装说明
 
@@ -149,30 +150,30 @@ Fuel 主节点：用于提供PXE方式操作系统安装服务由开源软件Cob
 
 创建fuel 主节点虚拟机,虚拟机名字为“fuel_3.2.1“。注意网卡选用net1，也就是virtualbox 的”VirtualBox  host-only Ethernet Adapter#2“ 网络。
 
-[fuel master setup](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_setup.jpg)
+![fuel master setup](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_setup.jpg)
 
 设置完成后启动虚拟机，显示boot menu时候，如果需要修改ip地址可以自行修改，默认是不需要修改。
 
 
-[fuel master boot menu](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_boot_menu.jpg)
+![fuel master boot menu](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_boot_menu.jpg)
 
 开始安装操作系统
 
 出现该画面时按任意键进入修改fuel 主节点相关配置，可以不修改使用默认值，几秒后进行软件包安装。
 
-[fuel master boot menu](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_boot_menu.jpg)
+![fuel master boot menu](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_boot_menu.jpg)
 
 puppet 安装fuel 相关软件，比如Cobbler 等。
 
-[fuel master installation puppet](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_installation_puppet.jpg)
+![fuel master installation puppet](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_installation_puppet.jpg)
 
 fuel 主节点安装完成。
 
-[fuel master done](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_done.jpg)
+![fuel master done](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_done.jpg)
 
 看fuel 安装是否完成，就登录http://10.20.0.2:8000/ 显示如下页面。
 
-[fuel master web home](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_web_home.jpg)
+![fuel master web home](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/fuel_master_web_home.jpg)
 
 可能的问题：
 
@@ -196,60 +197,60 @@ fuel 主节点安装完成。
 [create openstack qemu](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/create_openstack_qemu.jpg)
 
 这里选择openstack 的网络部署模式，我们选最简单的方式也是目前最成熟的方式nova-network实现。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 最后一路使用default 配置，不做更改完成环境创建。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 创建openstack节点虚拟机VM2和VM3，分别命名为fuel_3.2.1_controller和fuel_3.2.1_compute1,注意计算节点多分配写cpu core ，至少2个，内存2G，当然如果机器配置不够也可以1个core 1G内存，至少后边创建openstack的instance比较慢。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 设置系统由network启动
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 配置网卡1，接入net1，注意一定要选择 网卡类型为：Pcnet-PCI II，并且开启混杂模式：Allow All.
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 配置网卡2，接入net2.
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 配置网卡3，接入net3
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 让后分别启动VM2和VM3
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 画面出现bootstrap login 后，在fuel web 页面才可以看到节点被fuel发现。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 回到fuel web 可以看到两个节点被发现
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 接下来开始针对这两个被发现的节点VM2，VM3配置openstack环境了。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 
 首先需要配置VM2和VM3在openstack 中的角色。点击”add nodes“ 添加VM2作为openstack 的控制节点。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 在点击”add nodes“ 添加VM3作为openstack 的计算节点。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 修改两个节点的物理网卡和openstack 逻辑网络的映射关系，这里只需要拖拽就搞定。admin 网络已经设置到eth0不能再作修改10.20.0.0/24，public和  instance floating 网络共用eth1 且共用同一个地址块172.16.0.0/24，而private ，management 和storage 共用eth2 但是网络ip不同，需要通过vlan tag 方式实现二层网络隔离。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 修改两个节点磁盘的分区情况，这里使用默认值，注意storage 分区不能小于10g，否则不能通过验证。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 
 再来配置openstack 最复杂的一块网络，其实按照我给的网络拓扑使用默认值就可以安装啦，是不是很方便？不过还是要啰嗦一下：
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 public IP用于物理机器和外界通信，floating IP 用于动态分配给openstack instance 实现和外界通信。注意这里地址块不能重叠。
 由于private，management和storage共用同一网卡且IP块不同要实现二层隔离就需要打上vlan的tag，如果是接在真实的交换机，必须启用trunk 模式。
 一旦网络配置完毕并安装完成，这个地址是永久不能改变的，所以生产环境下一定要先规划好在部署。
@@ -257,43 +258,43 @@ public IP用于物理机器和外界通信，floating IP 用于动态分配给op
 
 验证通过后保持设置，开始部署节点。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 此时可以发现两个VM开始自动重启开始安装OS。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 这里比较古怪，安装进度到33%时需要等很久才能往下走。这个时候两个节点的OS都已经安装完成。
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 有什么办法能看到安装的log呢？当然有，这时候可以去log 标签视图查看安装log，选取”other server“，在选对应节点的puppet log 看log 跳动。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 最后，一切顺利的话，大概20 几分钟安装就会完成了，不过具体时间取决于机器性能，这时候点击http://172.16.0.2 或者 http://10.20.0.4 都可以访问openstack 的dashboard .区别在于172.16.0.2 所谓的公网ip 地址，这个登后dashboard 可以直接使用vnc 访问instance，而10.20.0.4不能。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 点击链接进入openstack登录页面，输入admin/admin
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 至此，openstack的环境部署完成，这里部署了一个计算节点，一个控制节点。没有部署cinder ，没有部署多计算节点。如果需要部署，请重复上述步骤即可。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 最后，就是验证一下openstack环境是否正确部署。其实fuel 有个非常好的而一个功能，可以快速检测openstack 环境”健康“情况。进入healthcheck 标签，可以一键安全检测，注意不会全部都通过，应为cinder 没有安装，所以create volume 相关的服务会失败。
 
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 最后我们还是创个instance 来验证吧？
 
 安装openstack环境验证
 
 先登录后进入openstack主管理界面，创建一个instance，进入project view – > 打开instances tab -> 点击右上方luanch 按钮。instance 名字为test0
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 instance 创建成功后，同时点击相应instance test0右边的”more“ 按钮，选择”allocation floating ip“，为其分配一个floating ip 地址。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 
 
@@ -301,7 +302,7 @@ instance 创建成功后，同时点击相应instance test0右边的”more“ �
 
 最后在笔记本上打开一个”cmd“ 终端看一下floating ip 是否通畅。
 
-[](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
+![](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/)
 
 至此fuel web openstack 安装介绍结束，如果要安装更多节点请重复上面操作即可。
 
