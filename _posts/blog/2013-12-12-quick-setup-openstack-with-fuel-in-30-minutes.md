@@ -5,12 +5,12 @@ category: blog
 description: 一直以来，对于openstack 的初学者来讲，安装往往是入门的头大难题。
 ---
 
-声明：  
-本博客欢迎转发，但请保留原作者信息! 内容系本人及本人团队学习、研究和总结，如有雷同，实属荣幸!
+*声明:*
 
+_本博客欢迎转发，但请保留原作者信息! 内容系本人及本人团队学习、研究和总结，如有雷同，实属荣幸!_
 作者： [罗勇] 云计算工程师、敏捷开发实践者
-博客： <http://yongluo2013.github.io/>
-微博： <http://weibo.com/u/1704250760/>
+博客： [http://yongluo2013.github.io/](http://yongluo2013.github.io/)
+微博： [http://weibo.com/u/1704250760/](http://weibo.com/u/1704250760/)
 
 
 一直以来，对于openstack 的初学者来讲，安装往往是入门的头大难题。在E版本之前，要搭建一个基本能用的openstack 环境那是相当麻烦，自己要装机，自己搞源，自己照着文档敲命令，又没有靠谱的文档，官方给出的文档依旧有好多坑，还有语言问题往往用上好几天时间都装不起来，慢慢地就丧失了学习openstack 的信心！不过后来情况有了很大改观，从E版本开始，以后安装过程简化许多，文档质量提高不少。尽管如此对于初学者还讲还是比较复杂，其实很多时候，很多人只是想体会一下openstack，完全不关注安装这门子事情。还好openstack社区足够活跃，很快就有公司做出了比较友好的安装工具，比如今天要向大家介绍的Fuel这个工具，其实这里还可以叫她mirantis openstack，由Mirantis 公司开发。
@@ -60,19 +60,16 @@ Fuel 主节点：用于提供PXE方式操作系统安装服务由开源软件Cob
 
 硬件要求：
 
-```
-启用虚拟化技术支持：开启BIOS设置里的虚拟化技术支持相关选项，这个会很大程度上影响你的虚拟机性能。
+* 启用虚拟化技术支持：开启BIOS设置里的虚拟化技术支持相关选项，这个会很大程度上影响你的虚拟机性能。
+* 最低硬件配置：cpu：双核2.6GHZ+；内存：4g+；磁盘：80G+
+* 虚拟化工具：Oracle Virtualbox 4.2.18
 
-最低硬件配置：cpu：双核2.6GHZ+；内存：4g+；磁盘：80G+
 
-虚拟化工具：Oracle Virtualbox 4.2.18
-
-```
 安装包准备：
 
-1.下载virtualbox 包 https://www.virtualbox.org/wiki/Downloads/
+* 下载virtualbox 包 https://www.virtualbox.org/wiki/Downloads/
 
-2.下载fuel ios包，先要注册一个mirantis 用户账户，目前最新版本是3.2.1 这个版本， MirantisOpenStack-3.2.1.iso （1.8G)http://www.openstack.cn/p383.html
+* 下载fuel ios包，先要注册一个mirantis 用户账户，目前最新版本是3.2.1 这个版本， MirantisOpenStack-3.2.1.iso （1.8G)http://www.openstack.cn/p383.html
 
 安装步骤介绍：
 
