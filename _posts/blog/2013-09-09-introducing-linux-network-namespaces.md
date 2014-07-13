@@ -22,16 +22,22 @@ Further, I’ll assume that you’re either running as root, or that you will pr
 ##Creating and Listing Network Namespaces
 
 Creating a network namespace is actually quite easy. Just use this command:
+
 ```
 # ip netns add <new namespace name>
+
 ```
 For example, let’s say you wanted to create a namespace called “blue”. You’d use this command:
+
 ```
 # ip netns add blue
+
 ```
 To verify that the network namespace has been created, use this command:
+
 ```
 $ ip netns list
+
 ```
 You should see your network namespace listed there, ready for you to use.
 
@@ -42,24 +48,32 @@ Creating the network namespace is only the beginning; the next part is to assign
 It turns out you can only assign virtual Ethernet (veth) interfaces to a network namespace. Virtual Ethernet interfaces are an interesting construct; they always come in pairs, and they are connected like a tube—whatever comes in one veth interface will come out the other peer veth interface. As a result, you can use veth interfaces to connect a network namespace to the outside world via the “default” or “global” namespace where physical interfaces exist.
 
 Let’s see how that’s done. First, you’d create the veth pair:
+
 ```
 # ip link add veth0 type veth peer name veth1
+
 ```
 I found a few sites that repeated this command to create veth1 and link it toveth0, but my tests showed that both interfaces were created and linked automatically using this command listed above. Naturally, you could substitute other names for veth0 and veth1, if you wanted.
 
 You can verify that the veth pair was created using this command:
+
 ```
 $ ip link list
+
 ```
 You should see a pair of veth interfaces (using the names you assigned in the command above) listed there. Right now, they both belong to the “default” or “global” namespace, along with the physical interfaces.
 
 Let’s say that you want to connect the global namespace to the blue namespace. To do that, you’ll need to move one of the veth interfaces to the blue namespace using this command:
+
 ```
 # ip link set veth1 netns blue
+
 ```
 If you then run the ip link list command again, you’ll see that the veth1 interface has disappeared from the list. It’s now in the blue namespace, so to see it you’d need to run this command:
+
 ```
 ip netns exec blue ip link list
+
 ```
 Whoa! That’s a bit of a complicated command. Let’s break it down:
 
@@ -72,18 +86,24 @@ When you run that command, you should see a loopback interface and the veth1 int
 ##Configuring Interfaces in Network Namespaces
 
 Now that veth1 has been moved to the blue namespace, we need to actually configure that interface. Once again, we’ll use the ip netns execcommand, this time to configure the veth1 interface in the blue namespace:
+
 ```
 #ip netns exec blue ifconfig veth1 10.1.1.1/24 up
+
 ```
 As before, the format this command follows is:
+
 ```
 #ip netns exec <network namespace> <command to run against that namespace>
+
 ```
 In this case, you’re using ifconfig to assign an IP address to the veth1 interface and bring that interface up. (Note: you could use the ip addr, ip route, and ip link commands to accomplish the same thing.)
 
 Once the veth1 interface is up, you can verify that the network configuration of the blue namespace is completely separate by just using a few different commands. For example, let’s assume that your “global” namespace has physical interfaces in the 172.16.1.0/24 range, and your veth1 interface is in a separate namespace and assigned something from the 10.1.1.0/24 range. You could verify how network namespaces keep the network configuration separate using these commands:
+
 ```
 #ip addr list in the global namespace will not show any 10.1.1.0/24-related interfaces or addresses.
+
 ```
 ip netns exec blue ip addr list will show only the 10.1.1.0/24-related interfaces and addresses, and will not show any interfaces or addresses from the global namespace.
 Similarly, ip route list in each namespace will show different routing table entries, including different default gateways.
