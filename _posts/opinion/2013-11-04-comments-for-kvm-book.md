@@ -12,7 +12,7 @@ description: 整体来说该书是一本kvm入门级图书，主要讲了kvm基�
 
 整体来说该书是一本kvm入门级图书，主要讲了kvm基本原理和常用使用方法。要是有一定基础，估计一个周末完全可以读完！
 
-![kvm book](/images/2013-11-04-comments-for-kvm-book/kvm-book.jpg)
+![kvm book](/images/2013-11-04-comments-for-kvm-book/kvm_book.jpg)
 
 接下来，还是谈谈我读完该书的一些体会吧。
 
