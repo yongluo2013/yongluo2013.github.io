@@ -2,7 +2,7 @@
 layout: post
 title: Enabling VLAN tagging on Redhat Linux
 category: blog
-description: I came across this one today, and am putting it here to document it ofr my own benefit.
+description: I needed a physical machine with one NIC to be able to have two different IP addresses on two different VLAN’s.
 ---
 
 声明：本博客欢迎转发，但请保留原作者信息!      
@@ -12,7 +12,7 @@ description: I came across this one today, and am putting it here to document it
 
 The post from [http://technodrone.blogspot.com/2011/10/enabling-vlan-tagging-on-redhat-linux.html](http://technodrone.blogspot.com/2011/10/enabling-vlan-tagging-on-redhat-linux.html)    
 
-I came across this one today, and am putting it here to document it ofr my own benefit. I needed a physical machine with one NIC to be able to have two different IP addresses on two different VLAN’s.
+I came across this one today, and am putting it here to document it for my own benefit. I needed a physical machine with one NIC to be able to have two different IP addresses on two different VLAN’s.
 
 On Windows I am not sure if that is possible by default.
 
@@ -58,6 +58,7 @@ I then copied the file again to my second interface
 cp /etc/sysconfig/network-scripts/ifcfg-eth0.10 /etc/sysconfig/network-scripts/ifcfg-eth0.20
 
 and changed the IP address and device name
+
 ```
 DEVICE=eth0.20
 ONBOOT=yes
@@ -70,6 +71,7 @@ PEERDNS=yes
 TYPE=Ethernet
 IPV6INIT=no
 ```
+
 I then removed the original IP address information from 
 /etc/sysconfig/network-scripts/ifcfg-eth0
 
