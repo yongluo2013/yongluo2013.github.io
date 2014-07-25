@@ -87,8 +87,10 @@ IPV6INIT=no
 
 And restart the network service
 
+```
 service network restart
 
+```
 Of course the configuration has to be done as well on the switch side as well to allow the trunk of both VLAN’s
 
 Switch#(config)interface Gi3/41
