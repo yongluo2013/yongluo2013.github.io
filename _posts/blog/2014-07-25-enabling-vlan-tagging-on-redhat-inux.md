@@ -93,10 +93,9 @@ service network restart
 ```
 Of course the configuration has to be done as well on the switch side as well to allow the trunk of both VLAN’s
 
+```
 Switch#(config)interface Gi3/41
-
 Switch#(config-if)no switchport mode access
-
 Switch#(config-if)switchport mode trunk
-
 Switch#(config-if)switchport trunk allowed vlan 10,20     
+```
