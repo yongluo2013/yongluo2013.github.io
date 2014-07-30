@@ -287,7 +287,7 @@ public IP用于物理机器和外界通信，floating IP 用于动态分配给op
 
 先登录后进入openstack主管理界面，创建一个instance，进入project view – > 打开instances tab -> 点击右上方luanch 按钮。instance 名字为test0
 
-![dashboard vm create](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/dashboard_vm_create.jpg)
+![dashboard vm create](/images/2013-12-12-quick-setup-openstack-with-fuel-in-30-minutes/dashboard_vm_create.png)
 
 instance 创建成功后，同时点击相应instance test0右边的”more“ 按钮，选择”allocation floating ip“，为其分配一个floating ip 地址。
 
