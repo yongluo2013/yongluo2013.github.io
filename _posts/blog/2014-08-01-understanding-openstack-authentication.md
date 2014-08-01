@@ -12,8 +12,7 @@ description: the latest stable release of OpenStack, codenamed Grizzly, revoluti
 
 Post from [http://www.mirantis.com/blog/understanding-openstack-authentication-keystone-pki/](http://www.mirantis.com/blog/understanding-openstack-authentication-keystone-pki/)      
 
-
-the latest stable release of OpenStack, codenamed Grizzly, revolutionizes the way user authentication works. You may have read some of the few articles available on this new authentication scheme. This post attempts to capture the full scope of this new feature. It focuses not on how Keystone issues tokens but rather the later stage, where existing tokens are used by clients to sign their API calls. These requests are later validated by OpenStack API endpoints. You’ll see first why you need tokens and then how PKI tokens can be used by OpenStack API endpoints to conduct user token verification without explicit calls to Keystone. We begin by explaining how clients connect to OpenStack.
+The latest stable release of OpenStack, codenamed Grizzly, revolutionizes the way user authentication works. You may have read some of the few articles available on this new authentication scheme. This post attempts to capture the full scope of this new feature. It focuses not on how Keystone issues tokens but rather the later stage, where existing tokens are used by clients to sign their API calls. These requests are later validated by OpenStack API endpoints. You’ll see first why you need tokens and then how PKI tokens can be used by OpenStack API endpoints to conduct user token verification without explicit calls to Keystone. We begin by explaining how clients connect to OpenStack.
 
 ##OpenStack, APIs, and clients
 
@@ -73,7 +72,8 @@ The API endpoints use these bits to validate the user requests. There is no need
 
 To use PKI tokens in Grizzly, we need to generate all the keys and certs. We can do that using the following command:
 
-keystone-manage pki_setup
+	keystone-manage pki_setup
+	
 This command generates the following files:
 
 CA private key
@@ -95,33 +95,33 @@ User roles
 Metadata
 An example of the input data follows:
 
-{
-   "access": {
-       "metadata": {
-           ....metadata goes here....
-       },
-       "serviceCatalog": [
-           ....endpoints goes here....
-       ],
-       "token": {
-           "expires": "2013-05-26T08:52:53Z",
-           "id": "placeholder",
-           "issued_at": "2013-05-25T18:59:33.841811",
-           "tenant": {
-               "description": null,
-               "enabled": true,
-               "id": "925c23eafe1b4763933e08a4c4143f08",
-               "name": "user"
-           }
-       },
-       "user": {
-           ....userdata goes here....
-       }
-   }
-}
+	{
+	   "access": {
+	       "metadata": {
+	           ....metadata goes here....
+	       },
+	       "serviceCatalog": [
+	           ....endpoints goes here....
+	       ],
+	       "token": {
+	           "expires": "2013-05-26T08:52:53Z",
+	           "id": "placeholder",
+	           "issued_at": "2013-05-25T18:59:33.841811",
+	           "tenant": {
+	               "description": null,
+	               "enabled": true,
+	               "id": "925c23eafe1b4763933e08a4c4143f08",
+	               "name": "user"
+	           }
+	       },
+	       "user": {
+	           ....userdata goes here....
+	       }
+	   }
+	}
 The CMS token is just the above metadata in CMS format, signed with Keystone’s signing key. It typically takes the form of a lengthy, seemingly random string:
 
-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
+	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
 The command used for this is:
 
 openssl cms -sign -signer /etc/keystone/ssl/certs/signing_cert.pem -inkey /etc/keystone/ssl/private/signing_key.pem -outform PEM -nosmimecap -nodetach -nocerts -noattr
@@ -154,18 +154,18 @@ HANDLING DELETED TOKENS
 
 The deletion of tokens is enforced by putting a given token onto a revocation list within the Keystone CA. By default, this list is being updated (pulled from Keystone) by API endpoints every second from the following URL:
 
-curl http://[KEYSTONE IP]:35357/v2.0/tokens/revoked
+	curl http://[KEYSTONE IP]:35357/v2.0/tokens/revoked
 The form of the list is a plain json file:
 
-{
-   "revoked": [
-       {
-           "expires": "2013-05-27T08:31:37Z",
-           "id": "aef56cc3d1c9192b0257fba1a420fc37"
-       }
-    …
-   ]
-}
+	{
+	   "revoked": [
+	       {
+	           "expires": "2013-05-27T08:31:37Z",
+	           "id": "aef56cc3d1c9192b0257fba1a420fc37"
+	       }
+	    …
+	   ]
+	}
 While “expires” field does not need further explanation, the “id” field looks somewhat cryptic. It is the md5 hash calculated out of the CMS user token: md5(cms_token). API endpoints also calculate md5 hashes out of CMS token received with user requests and search the matching md5-s on the “revoked” list. If no match is found, then the token is considered to be valid.
 
 ##Summary
