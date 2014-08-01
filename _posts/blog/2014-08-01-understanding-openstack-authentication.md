@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Understanding OpenStack Authentication: Keystone PKI
+title: Understanding OpenStack Authentication in Keystone PKI
 category: blog
 description: the latest stable release of OpenStack, codenamed Grizzly, revolutionizes the wa user authentication works.
 ---
@@ -73,7 +73,7 @@ The API endpoints use these bits to validate the user requests. There is no need
 To use PKI tokens in Grizzly, we need to generate all the keys and certs. We can do that using the following command:
 
 	keystone-manage pki_setup
-	
+
 This command generates the following files:
 
 CA private key
