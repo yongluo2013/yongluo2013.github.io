@@ -38,15 +38,16 @@ UUID token validation flow-3
 
 Based on supplied username/password pair (we assume it’s correct in this scenario and on the diagram):
 
-Keystone would:
-Generate a UUID token.
-Store the UUID token in its backend.
-Send a copy of the UUID token back to the client.
-The client would cache the token.
-The UUID would be then passed along with each API call by the client.
-Upon each user request, the API endpoint would send this UUID back to Keystone for validation.
-Keystone would take the UUID and match it against its auth backend (check UUID string, expiration date).
-Keystone would return “success” or “failure” message to the API endpoint.
+* Keystone would:
+	* Generate a U* UID token.
+	* Store the UUID token in its backend.
+	* Send a copy of the UUID token back to the client.
+* The client would cache the token.
+* The U UID would be then passed along with each API call by the client.
+* Upon each user request, the API endpoint would send this UUID back to Keystone for validation.
+* Keystone would take the UUID and match it against its auth backend (check UUID string, expiration date).
+* Keystone would return “success” or “failure” message to the API endpoint.
+
 As you can see from the above diagram, for each user call the API endpoints need to conduct online verification with the Keystone service. Imagine thousands of clients performing VM listings, network creation, and so on. This activity results in extensive traffic to the Keystone service. In fact, in production, Keystone proves to be one of the most loaded OpenStack services on the network side, but Grizzly gets rid of this problem quite nicely.
 
 Enter PKI tokens.
@@ -77,14 +78,18 @@ To use PKI tokens in Grizzly, we need to generate all the keys and certs. We can
 This command generates the following files:
 
 CA private key
-openssl genrsa -out /etc/keystone/ssl/certs/cakey.pem 1024 -config /etc/keystone/ssl/certs/openssl.conf
+
+	openssl genrsa -out /etc/keystone/ssl/certs/cakey.pem 1024 -config /etc/keystone/ssl/certs/openssl.conf
+
 CA certificate
-openssl req -new -x509 -extensions v3_ca -passin pass:None -key /etc/keystone/ssl/certs/cakey.pem -out /etc/keystone/ssl/certs/ca.pem -days 3650 -config /etc/keystone/ssl/certs/openssl.conf -subj /C=US/ST=Unset/L=Unset/O=Unset/CN=www.example.com
+	openssl req -new -x509 -extensions v3_ca -passin pass:None -key /etc/keystone/ssl/certs/cakey.pem -out /etc/keystone/ssl/certs/ca.pem -days 3650 -config /etc/keystone/ssl/certs/openssl.conf -subj /C=US/ST=Unset/L=Unset/O=Unset/CN=www.example.com
+
 Signing private key
-openssl genrsa -out /etc/keystone/ssl/private/signing_key.pem 1024 -config /etc/keystone/ssl/certs/openssl.conf
+	openssl genrsa -out /etc/keystone/ssl/private/signing_key.pem 1024 -config /etc/keystone/ssl/certs/openssl.conf
+
 Signing certificate
-openssl req -key /etc/keystone/ssl/private/signing_key.pem -new -nodes -out /etc/keystone/ssl/certs/req.pem -config /etc/keystone/ssl/certs/openssl.conf -subj /C=US/ST=Unset/L=Unset/O=Unset/CN=www.example.com
-openssl ca -batch -out /etc/keystone/ssl/certs/signing_cert.pem -config /etc/keystone/ssl/certs/openssl.conf -infiles /etc/keystone/ssl/certs/req.pem
+	openssl req -key /etc/keystone/ssl/private/signing_key.pem -new -nodes -out /etc/keystone/ssl/certs/req.pem -config /etc/keystone/ssl/certs/openssl.conf -subj /C=US/ST=Unset/L=Unset/O=Unset/CN=www.example.com
+	openssl ca -batch -out /etc/keystone/ssl/certs/signing_cert.pem -config /etc/keystone/ssl/certs/openssl.conf -infiles /etc/keystone/ssl/certs/req.pem
 
 ##Token generation and format
 
@@ -122,9 +127,10 @@ An example of the input data follows:
 The CMS token is just the above metadata in CMS format, signed with Keystone’s signing key. It typically takes the form of a lengthy, seemingly random string:
 
 	MIIDsAYJKoZIhvcNAQcCoIIDoTCCA50CAQExCTAHBgUrDgMCGjCCAokGCSqGSIb3DQEHAaCCAnoEggJ2ew0KICAgICJhY2Nlc3MiOiB7DQogICAgICAgICJtZXRhZGF0YSI6IHsNCiAgICAgICAgICAgIC4uLi5tZXRhZGF0YSBnb2VzIGhlcmUuLi4uDQogICAgICAgIH0sDQogICAgICAgICJzZXJ2aWNlQ2F0YWxvZyI6IFsNCiAgICAgICAgICAgIC4uLi5lbmRwb2ludHMgZ29lcyBoZXJlLi4uLg0KICAgICAgICBdLA0KICAgICAgICAidG9rZW4iOiB7DQogICAgICAgICAgICAiZXhwaXJlcyI6ICIyMDEzLTA1LTI2VDA4OjUyOjUzWiIsDQogICAgICAgICAgICAiaWQiOiAicGxhY2Vob2xkZXIiLA0KICAgICAgICAgICAgImlzc3VlZF9hdCI6ICIyMDEzLTA1LTI1VDE4OjU5OjMzLjg0MTgxMSIsDQogICAgICAgICAgICAidGVuYW50Ijogew0KICAgICAgICAgICAgICAgICJkZXNjcmlwdGlvbiI6IG51bGwsDQogICAgICAgICAgICAgICAgImVuYWJsZWQiOiB0cnVlLA0KICAgICAgICAgICAgICAgICJpZCI6ICI5MjVjMjNlYWZlMWI0NzYzOTMzZTA4YTRjNDE0M2YwOCIsDQogICAgICAgICAgICAgICAgIm5hbWUiOiAidXNlciINCiAgICAgICAgICAgIH0NCiAgICAgICAgfSwNCiAgICAgICAgInVzZXIiOiB7DQogICAgICAgICAgICAuLi4udXNlcmRhdGEgZ29lcyBoZXJlLi4uLg0KICAgICAgICB9DQogICAgfQ0KfQ0KMYH/MIH8AgEBMFwwVzELMAkGA1UEBhMCVVMxDjAMBgNVBAgTBVVuc2V0MQ4wDAYDVQQHEwVVbnNldDEOMAwGA1UEChMFVW5zZXQxGDAWBgNVBAMTD3d3dy5leGFtcGxlLmNvbQIBATAHBgUrDgMCGjANBgkqhkiG9w0BAQEFAASBgEh2P5cHMwelQyzB4dZ0FAjtp5ep4Id1RRs7oiD1lYrkahJwfuakBK7OGTwx26C+0IPPAGLEnin9Bx5Vm4cst/0+COTEh6qZfJFCLUDj5b4EF7r0iosFscpnfCuc8jGMobyfApz/dZqJnsk4lt1ahlNTpXQeVFxNK/ydKL+tzEjg
+	
 The command used for this is:
 
-openssl cms -sign -signer /etc/keystone/ssl/certs/signing_cert.pem -inkey /etc/keystone/ssl/private/signing_key.pem -outform PEM -nosmimecap -nodetach -nocerts -noattr
+	openssl cms -sign -signer /etc/keystone/ssl/certs/signing_cert.pem -inkey /etc/keystone/ssl/private/signing_key.pem -outform PEM -nosmimecap -nodetach -nocerts -noattr
 
 ##Token verification and expiration
 
@@ -139,8 +145,9 @@ CHECKING TOKEN SIGNATURE
 
 In order to do check the signature, all of the API endpoints need Keystone certs. These files can be obtained directly from the Keystone Service:
 
-curl http://[KEYSTONE IP]:35357/v2.0/certificates/signing
-curl http://[KEYSTONE IP]:35357/v2.0/certificates/ca
+	curl http://[KEYSTONE IP]:35357/v2.0/certificates/signing
+	curl http://[KEYSTONE IP]:35357/v2.0/certificates/ca
+
 If the API service cannot find these files on its local disk, it will automatically download them from Keystone. The following command is used to verify the signature on the token:
 
 openssl cms -verify -certfile /tmp/keystone-signing-nova/signing_cert.pem -CAfile /tmp/keystone-signing-nova/cacert.pem -inform PEM -nosmimecap -nodetach -nocerts -noattr < cms_token
