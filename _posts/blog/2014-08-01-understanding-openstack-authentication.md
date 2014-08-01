@@ -2,7 +2,7 @@
 layout: post
 title: Understanding OpenStack Authentication: Keystone PKI
 category: blog
-description: the latest stable release of OpenStack, codenamed Grizzly, revolutionizes the way user authentication works. 
+description: the latest stable release of OpenStack, codenamed Grizzly, revolutionizes the wa user authentication works.
 ---
 
 声明：本博客欢迎转发，但请保留原作者信息!      
